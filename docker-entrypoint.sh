@@ -45,4 +45,9 @@ then
     chmod 600 stunnel.pem
 fi
 
+echo "# # # ACTIVE CONFIG # # #"
+cat "stunnel.conf"
+echo "# # # ACTIVE CONFIG # # #"
+
+echo "Starting stunnel..."
 exec stunnel "$@"
