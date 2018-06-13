@@ -36,7 +36,7 @@ TIMEOUTidle = 600
 
 [${SERVICE}]
 accept = 0.0.0.0:${ACCEPT_PORT}
-connect = ${DESTINATIN_IP}:${DESTINATION_PORT}" "test.conf"
+connect = ${DESTINATIN_IP}:${DESTINATION_PORT}" "stunnel.conf"
 
 if ! [ -f stunnel.pem ]
 then
