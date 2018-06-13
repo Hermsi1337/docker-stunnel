@@ -13,7 +13,7 @@ cd /etc/stunnel
 
 if [ -f stunnel.conf ]
 then
-    rm stunnel.conf
+    rm -f stunnel.conf
 fi
 
 to_file "foreground = yes
