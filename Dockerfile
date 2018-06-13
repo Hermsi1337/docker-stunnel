@@ -5,7 +5,7 @@ LABEL       maintainer="https://github.com/Hermsi1337"
 ENV         ACCEPT_PORT=80 \
             SERVICE=httpsconnect \
             DESTINATION_PORT=443 \
-            DESTINATIN_IP=0.0.0.0 \
+            DESTINATION_IP=0.0.0.0 \
             CLIENT=yes
 
 COPY        docker-entrypoint.sh /entrypoint.sh
