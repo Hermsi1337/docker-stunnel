@@ -17,6 +17,7 @@ before_script:
   - sudo sysctl -w net.ipv4.ip_forward=1
   - export ALPINE_VERSION="3.9"
   - export STUNNEL_VERSION="$(w3m -dump "https://pkgs.alpinelinux.org/packages?name=stunnel&branch=v${ALPINE_VERSION}" | grep -m 1 "x86" | awk '{print $2}')"
+  - export LIBRESSL_VERSION="$(w3m -dump "https://pkgs.alpinelinux.org/packages?name=libressl&branch=v${ALPINE_VERSION}" | grep -m 1 "x86" | awk '{print $2}')"
 
 script: |
   docker build \
@@ -25,6 +26,8 @@ script: |
           --quiet \
           --build-arg ALPINE_VERSION="${ALPINE_VERSION}" \
           --build-arg STUNNEL_VERSION="${STUNNEL_VERSION}" \
+          --tag "${IMAGE_NAME}:${STUNNEL_VERSION}-libressl${LIBRESSL_VERSION}-alpine${ALPINE_VERSION}" \
+          --tag "${IMAGE_NAME}:${STUNNEL_VERSION}-libressl${LIBRESSL_VERSION}-alpine" \
           --tag "${IMAGE_NAME}:${STUNNEL_VERSION}-alpine${ALPINE_VERSION}" \
           --tag "${IMAGE_NAME}:${STUNNEL_VERSION}-alpine" \
           --tag "${IMAGE_NAME}:${STUNNEL_VERSION}" \
@@ -33,6 +36,8 @@ script: |
           "${TRAVIS_BUILD_DIR}"
   if [[ "${TRAVIS_BRANCH}" == "master" ]] && [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then
     docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}"
+    docker push "${IMAGE_NAME}:${STUNNEL_VERSION}-libressl${LIBRESSL_VERSION}-alpine${ALPINE_VERSION}"
+    docker push "${IMAGE_NAME}:${STUNNEL_VERSION}-libressl${LIBRESSL_VERSION}-alpine"
     docker push "${IMAGE_NAME}:${STUNNEL_VERSION}-alpine${ALPINE_VERSION}"
     docker push "${IMAGE_NAME}:${STUNNEL_VERSION}-alpine"
     docker push "${IMAGE_NAME}:${STUNNEL_VERSION}"
