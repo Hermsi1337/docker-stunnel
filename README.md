@@ -1,4 +1,4 @@
-## Make your OpenSSH fly on Alpine
+## Make your Stunnel fly on Alpine
 
 ### Overview
 Use this Dockerfile / -image to start a stunnel-server upon a lightweight Alpine container.
