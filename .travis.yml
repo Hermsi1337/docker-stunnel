@@ -15,7 +15,7 @@ env:
 
 before_script:
   - sudo sysctl -w net.ipv4.ip_forward=1
-  - export ALPINE_VERSION="3.9"
+  - export ALPINE_VERSION="3.10"
   - export STUNNEL_VERSION="$(w3m -dump "https://pkgs.alpinelinux.org/packages?name=stunnel&branch=v${ALPINE_VERSION}" | grep -m 1 "x86" | awk '{print $2}')"
   - export LIBRESSL_VERSION="$(w3m -dump "https://pkgs.alpinelinux.org/packages?name=libressl&branch=v${ALPINE_VERSION}" | grep -m 1 "x86" | awk '{print $2}')"
 
